@@ -15,47 +15,64 @@ export default function Register() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleRegister = async (e) => {
+  // const handleRegister = async (e) => {
+  //   e.preventDefault();
+
+  //   const formData = new FormData(e.currentTarget);
+
+  //   const registerData = Object.fromEntries(formData.entries());
+
+  //   const { data, error } = await signUp.email({
+  //     ...registerData,
+  //   });
+
+    
+
+  //   if (res.status === 409) {
+  //     toast.error("This email is already registered");
+  //     return;
+  //   }
+
+  //   if (!res.ok) {
+  //     toast.error(data.message || "Registration failed");
+  //     return;
+  //   }
+
+  //   toast.success("Registration successful!");
+  //   router.push("/");
+
+  //   //
+
+  //   // if (error) {
+  //   //   toast.error("Registration failed");
+  //   //   return;
+  //   // }
+  //   // router.push("/");
+  // };
+const handleRegister = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-
     const registerData = Object.fromEntries(formData.entries());
 
-    // const { data, error } = await signUp.email({
-    //   ...registerData,
-    // });
-
-    const res = await fetch("http://localhost:8080/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(registerData),
+ 
+    const { data, error } = await signUp.email({
+      email: registerData.email,
+      password: registerData.password,
+      name: registerData.name,
+      image: registerData.image,
+     
     });
 
-    const data = await res.json();
-
-    if (res.status === 409) {
-      toast.error("This email is already registered");
+    if (error) {
+      
+      toast.error(error.message || "Registration failed");
       return;
     }
 
-    if (!res.ok) {
-      toast.error(data.message || "Registration failed");
-      return;
-    }
 
     toast.success("Registration successful!");
     router.push("/");
-
-    //
-
-    // if (error) {
-    //   toast.error("Registration failed");
-    //   return;
-    // }
-    // router.push("/");
   };
 
   return (
