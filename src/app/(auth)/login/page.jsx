@@ -1,4 +1,3 @@
-🔧 তোমার fixed version (শুধু relevant অংশ দেখালাম)
 "use client";
 
 import { Button, Input } from "@heroui/react";
