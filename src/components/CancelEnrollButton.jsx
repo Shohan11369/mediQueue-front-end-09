@@ -1,17 +1,31 @@
 "use client";
 
-
 import { AlertDialog, Button } from "@heroui/react";
+import { useRouter } from "next/navigation";
 
-const CancelEnrollButton = () => {
+// enrollmentId প্রপসটি এখানে রিসিভ করুন
+const CancelEnrollButton = ({ enrollmentId }) => {
+    const router = useRouter();
+
+    const handleCancel = async () => {
+        try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/enrollments/${enrollmentId}`, {
+                method: "DELETE", // আপনার ব্যাকএন্ডে অবশ্যই DELETE মেথড থাকতে হবে
+            });
+
+            if (res.ok) {
+                router.refresh(); // পেজটি রিফ্রেশ করে লিস্ট আপডেট করবে
+            } else {
+                alert("Failed to cancel.");
+            }
+        } catch (error) {
+            console.error("Error canceling enrollment:", error);
+        }
+    };
 
     return (
         <AlertDialog>
-            <Button
-                color="danger"
-                variant="light"
-                size="sm"
-            >
+            <Button color="danger" variant="light" size="sm">
                 Cancel
             </Button>
             <AlertDialog.Backdrop>
@@ -24,22 +38,19 @@ const CancelEnrollButton = () => {
                         </AlertDialog.Header>
                         <AlertDialog.Body>
                             <p className="text-slate-600">
-                                Are you sure you want to cancel this enrollment? This action cannot be undone and you
-                                will lose access to the course materials.
+                                Are you sure you want to cancel this enrollment? This action cannot be undone.
                             </p>
                         </AlertDialog.Body>
                         <AlertDialog.Footer>
-                            <Button
-                                slot="close"
-                                variant="tertiary"
-                            >
+                            <Button slot="close" variant="tertiary">
                                 Keep Enrollment
                             </Button>
-                            <Button
-                                slot="close"
-                                color="danger"
+                            {/* এখানে onClick যোগ করা হলো */}
+                            <Button 
+                                slot="close" 
+                                color="danger" 
                                 className="font-bold"
-
+                                onClick={handleCancel} 
                             >
                                 Yes, Cancel
                             </Button>

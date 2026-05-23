@@ -1,11 +1,9 @@
-
-import Image from 'next/image';
 import { Button, Chip } from '@heroui/react';
-
 import Link from 'next/link';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import CancelEnrollButton from '@/components/CancelEnrollButton';
+import { redirect } from 'next/navigation'; 
 
 export default async function DashboardPage() {
 
@@ -16,7 +14,6 @@ export default async function DashboardPage() {
     const session = await auth.api.getSession({
         headers: await headers()
     })
-    // console.log(session);
 
     if (!session?.user || !token) {
         redirect("/login")
@@ -30,71 +27,52 @@ export default async function DashboardPage() {
     })
     const enrollments = await res.json() || [];
 
-    // console.log(enrollments);
-
-
     return (
         <div className="max-w-6xl mx-auto px-4 py-12">
             <div className="flex flex-col md:flex-row gap-8 items-start">
-                {/* Profile */}
+                {/* Profile Section */}
                 <div className="w-full md:w-1/4">
                     <div className="p-6 bg-white border rounded-2xl">
-                        <Image
-                            src={session?.user?.image}
-                            alt="profile"
-                            width={96}
-                            height={96}
-                            className="w-24 h-24 rounded-full"
-                        />
-
-                        <h2 className="text-xl font-bold mt-4">{session?.user?.name}</h2>
+                        
+                        <h2 className="text-xl font-bold">{session?.user?.name}</h2>
                         <p className="text-sm text-slate-500">{session?.user?.email}</p>
                     </div>
                 </div>
 
-                {/* Enrollments */}
+                {/* Enrollments Section */}
                 <div className="w-full md:w-3/4">
                     <h1 className="text-3xl font-bold mb-6">My Enrolled Courses</h1>
 
                     {enrollments?.length === 0 ? (
-                        <div className="p-12 text-center bg-slate-50 border rounded-2xl">
-                            <p className="mb-4">No courses yet</p>
-
-                            <Link href="/courses">
-                                <Button>Browse Courses</Button>
-                            </Link>
-                        </div>
+                        <NotFound />
                     ) : (
                         <div className="space-y-4">
                             {enrollments?.map((enrollment) => (
                                 <div
                                     key={enrollment?._id}
-                                    className="flex gap-4 p-4 bg-white border rounded-xl"
+                                    className="flex gap-4 p-6 bg-white border rounded-xl items-center"
                                 >
-                                    <Image
-                                        src={enrollment?.thumbnail}
-                                        alt="course"
-                                        width={120}
-                                        height={90}
-                                        className="rounded-lg"
-                                    />
+                                    <div className="flex flex-col grow gap-1">
+                                        {/* tutors*/}
+                                        <h3 className="font-bold text-lg">{enrollment?.courseTitle}</h3>
+                                        <p className="text-sm text-slate-600 font-medium">
+                                            Subject Name: <span className="text-blue-600">{enrollment?.subject}</span>
+                                        </p>
+                                        
+                                        {/* name */}
+                                        <p className="text-sm text-slate-600 font-medium">
+                                            Tutor: <span className="text-blue-600">{enrollment?.tutorName}</span>
+                                        </p>
+                                        
+                                        {/* Date */}
+                                        <p className="text-xs text-slate-400 mt-2">
+                                            Enrolled on: {new Date(enrollment?.enrolledAt).toDateString()}
+                                        </p>
+                                    </div>
 
-                                    <div className="flex flex-col grow justify-between">
-                                        <div>
-                                            <h3 className="font-bold">{enrollment?.courseTitle}</h3>
-                                            <p className="text-sm text-slate-500">{new Date(enrollment?.enrolledAt).toDateString()}</p>
-                                        </div>
-
-                                        <div className="flex justify-between items-center">
-                                            <Chip
-                                                color="success"
-                                                size="sm"
-                                            >
-                                                Active
-                                            </Chip>
-
-                                            <CancelEnrollButton />
-                                        </div>
+                                    <div className="flex flex-col items-end gap-3">
+                                        <Chip color="success" size="sm">Active</Chip>
+                                        <CancelEnrollButton enrollmentId={enrollment?._id} />
                                     </div>
                                 </div>
                             ))}
@@ -106,12 +84,10 @@ export default async function DashboardPage() {
     );
 }
 
-
 const NotFound = () => {
     return (
         <div className="p-12 text-center bg-slate-50 border rounded-2xl">
             <p className="mb-4">No courses yet</p>
-
             <Link href="/courses">
                 <Button>Browse Courses</Button>
             </Link>

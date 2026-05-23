@@ -1,3 +1,4 @@
+
 import { Button, Chip } from "@heroui/react";
 import { Clock, MapPin, BookOpen, ChevronRight, GraduationCap, Award } from "lucide-react";
 import Image from "next/image";
@@ -19,6 +20,7 @@ const CourseCard = ({ course }) => {
                     alt={tutorName}
                     src={image || "https://images.unsplash.com/photo-1524504388940-b1c1722653e1"}
                     fill
+                    priority={true}
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 
