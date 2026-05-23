@@ -62,7 +62,7 @@ const FeaturedCard = ({ course }) => {
                             className="rounded-full font-bold px-5"
                             endContent={<ChevronRight className="w-4 h-4" />}
                         >
-                            View
+                            Booking
                         </Button>
                     </Link>
                 </div>

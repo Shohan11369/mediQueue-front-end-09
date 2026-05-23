@@ -39,7 +39,7 @@ export default async function CourseDetails({ params }) {
     booked,
   } = course;
 
-  // console.log(course);
+
 
   const featuredItems = [
     { icon: Clock, label: availableTimeSlot || "12h 30m" },
