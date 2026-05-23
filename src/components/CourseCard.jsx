@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const CourseCard = ({ course }) => {
-    // আপনার ডেটাবেসের ফিল্ড অনুযায়ী ডি-স্ট্রাকচারিং
+    
     const { 
         _id, tutorName, image, subject, availableDays, availableTimeSlot, 
         hourlyFee, totalSlot, sessionStartDate, institution, experience, 
@@ -13,7 +13,7 @@ const CourseCard = ({ course }) => {
 
     return (
         <div className="group flex flex-col bg-white rounded-[2rem] border border-slate-100 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_50px_rgba(8,112,184,0.15)]">
-            {/* ইমেজ সেকশন */}
+            {/* image*/}
             <div className="relative aspect-16/10 overflow-hidden">
                 <Image
                     alt={tutorName}
