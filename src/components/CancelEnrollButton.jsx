@@ -3,7 +3,7 @@
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 
-// enrollmentId প্রপসটি এখানে রিসিভ করুন
+
 const CancelEnrollButton = ({ enrollmentId }) => {
     const router = useRouter();
 
@@ -14,7 +14,7 @@ const CancelEnrollButton = ({ enrollmentId }) => {
             });
 
             if (res.ok) {
-                router.refresh(); // পেজটি রিফ্রেশ করে লিস্ট আপডেট করবে
+                router.refresh(); 
             } else {
                 alert("Failed to cancel.");
             }
@@ -45,14 +45,14 @@ const CancelEnrollButton = ({ enrollmentId }) => {
                             <Button slot="close" variant="tertiary">
                                 Keep Enrollment
                             </Button>
-                            {/* এখানে onClick যোগ করা হলো */}
+                          
                             <Button 
                                 slot="close" 
                                 color="danger" 
                                 className="font-bold"
                                 onClick={handleCancel} 
                             >
-                                Yes, Cancel
+                                Yes, Detele
                             </Button>
                         </AlertDialog.Footer>
                     </AlertDialog.Dialog>
