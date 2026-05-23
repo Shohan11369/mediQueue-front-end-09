@@ -1,36 +1,18 @@
+🔧 তোমার fixed version (শুধু relevant অংশ দেখালাম)
 "use client";
 
 import { Button, Input } from "@heroui/react";
-
 import Link from "next/link";
-
-import { Mail, Lock, ArrowRight } from "lucide-react";
-
+import { Mail, Lock, ArrowRight, Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import { signIn } from "@/lib/auth-client";
 import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation"; // ✅ add this
 
 export default function Login() {
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-
-  //   const formData = new FormData(e.currentTarget);
-
-  //   const loginData = Object.fromEntries(formData.entries());
-
-  //   const { data, error } = await signIn.email({
-  //     ...loginData,
-  //     callbackURL: "/",
-  //   });
-
-  //     if (error) {
-  //   toast.error("Email or password invalid");
-  //   return;
-  // }
-
-  // };
+  const router = useRouter(); // ✅ add this
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -60,7 +42,7 @@ export default function Login() {
       }
 
       toast.success("Login successful!");
-      router.push("/");
+      router.push("/"); // ✅ now works
     } catch (err) {
       toast.error("Something went wrong");
     }
@@ -73,7 +55,7 @@ export default function Login() {
     });
   };
 
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="min-h-[80vh] flex flex-col bg-slate-50">
