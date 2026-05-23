@@ -4,12 +4,10 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { jwt } from "better-auth/plugins";
 const client = new MongoClient(process.env.MONGODB_URI);
 
-
 const db = client.db("mediQueue");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, {
-    
     client,
   }),
   emailAndPassword: {

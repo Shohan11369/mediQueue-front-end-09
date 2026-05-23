@@ -57,7 +57,7 @@ export default async function CourseDetails({ params }) {
                 image ||
                 "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200"
               }
-              alt="SHohan"
+              alt="image"
               fill
               className="object-cover transform transition duration-700 group-hover:scale-105"
             />
@@ -93,9 +93,7 @@ export default async function CourseDetails({ params }) {
             ))}
           </div>
 
-          {/* <p className="text-xs font-bold text-slate-400 italic">
-            Last enrolled:
-          </p> */}
+          
         </div>
 
         <div className="lg:col-span-1">
@@ -108,7 +106,7 @@ export default async function CourseDetails({ params }) {
                 <span className="text-5xl font-black text-blue-600">
                   ${hourlyFee}
                 </span>
-                {/* <span className="text-slate-400 line-through font-bold">${price}</span> */}
+               
               </div>
             </div>
 
@@ -136,7 +134,7 @@ export default async function CourseDetails({ params }) {
 
             <EnrollmentButton course={course} />
             <p className="text-center text-xs text-slate-500 font-bold">
-              30-Day Money-Back Guarantee • Secure Payment
+              30-Day Money-Back • Secure Payment
             </p>
           </div>
         </div>
@@ -148,9 +146,9 @@ export default async function CourseDetails({ params }) {
 const NotFound = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-24 text-center">
-      <h2 className="text-2xl font-bold text-red-500">Course not found</h2>
+      <h2 className="text-2xl font-bold text-red-500">Tutors page not found</h2>
       <p className="text-muted-foreground mt-2">
-        Please log in to view protected course details.
+        Please log in to view protected tutors details.
       </p>
     </div>
   );

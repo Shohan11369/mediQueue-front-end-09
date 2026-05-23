@@ -3,76 +3,47 @@
 import { Button, Input } from "@heroui/react";
 
 import Link from "next/link";
+import Image from "next/image";
 import { User, Mail, Lock, ArrowRight } from "lucide-react";
 import toast from "react-hot-toast";
-import { signUp } from "@/lib/auth-client";
+import { signIn, signUp } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+
 
 export default function Register() {
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
 
-  // const handleRegister = async (e) => {
-  //   e.preventDefault();
-
-  //   const formData = new FormData(e.currentTarget);
-
-  //   const registerData = Object.fromEntries(formData.entries());
-
-  //   const { data, error } = await signUp.email({
-  //     ...registerData,
-  //   });
-
-    
-
-  //   if (res.status === 409) {
-  //     toast.error("This email is already registered");
-  //     return;
-  //   }
-
-  //   if (!res.ok) {
-  //     toast.error(data.message || "Registration failed");
-  //     return;
-  //   }
-
-  //   toast.success("Registration successful!");
-  //   router.push("/");
-
-  //   //
-
-  //   // if (error) {
-  //   //   toast.error("Registration failed");
-  //   //   return;
-  //   // }
-  //   // router.push("/");
-  // };
-const handleRegister = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const registerData = Object.fromEntries(formData.entries());
 
- 
     const { data, error } = await signUp.email({
       email: registerData.email,
       password: registerData.password,
       name: registerData.name,
       image: registerData.image,
-     
     });
 
     if (error) {
-      
       toast.error(error.message || "Registration failed");
       return;
     }
 
-
     toast.success("Registration successful!");
     router.push("/");
+  };
+
+  const handleSocialSignUp = async () => {
+    await signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
   };
 
   return (
@@ -197,6 +168,25 @@ const handleRegister = async (e) => {
                   Sign in
                 </Link>
               </p>
+            </div>
+
+            {/* google */}
+
+            <div className="space-y-4">
+              <Button
+                variant="bordered"
+                className="w-full h-12 font-bold rounded-2xl border-slate-200 hover:bg-slate-50 transition-colors gap-3"
+                onClick={handleSocialSignUp}
+              >
+                <Image
+                  width={20}
+                  height={20}
+                  src="https://www.google.com/favicon.ico"
+                  className="w-5 h-5"
+                  alt="Google"
+                />
+                Sign Up with Google
+              </Button>
             </div>
           </div>
         </div>

@@ -62,7 +62,7 @@ const CourseCard = ({ course }) => {
         <div className="absolute top-4 left-4 flex gap-2">
           <Chip
             size="sm"
-            className="bg-white/90 backdrop-blur-md text-blue-600 font-bold border-none shadow-sm uppercase text-[10px]"
+            className="bg-white/90 backdrop-blur-md text-red-500 font-bold border-none shadow-sm uppercase text-[12px] p-2"
           >
             {subject}
           </Chip>
@@ -103,14 +103,14 @@ const CourseCard = ({ course }) => {
         <div className="pt-4 mt-auto border-t border-slate-100 flex justify-between items-center">
           <span className="text-xl font-black text-slate-900">
             ৳{hourlyFee}
-            <span className="text-xs text-slate-400 font-normal">/hr</span>
+            <span className="text-xs text-slate-400 font-normal"></span>
           </span>
 
           <Button
             onClick={handleView}
-            variant="flat"
+            variant="solid"
             color="primary"
-            className="font-bold rounded-xl px-5"
+            className="font-bold rounded-xl px-5 bg-cyan-200 hover:bg-amber-200"
             endContent={<ChevronRight className="w-4 h-4" />}
           >
             Booking

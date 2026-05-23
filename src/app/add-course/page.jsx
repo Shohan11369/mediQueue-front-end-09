@@ -44,49 +44,98 @@ export default function AddCourse() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 py-14 px-4">
       <div className="max-w-5xl mx-auto">
-
         {/* MAIN CARD */}
         <div className="bg-white/80 backdrop-blur-xl border border-slate-200 shadow-[0_30px_100px_rgba(0,0,0,0.08)] rounded-[2.5rem] p-10 md:p-14 space-y-12">
-
           {/* HEADER */}
           <div className="text-center space-y-3">
             <div className="mx-auto w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-600">
               <BookPlus className="w-8 h-8" />
             </div>
-
             <h1 className="text-4xl md:text-5xl font-black text-slate-900">
-              Create New <span className="text-blue-600">Course</span>
+              Add New <span className="text-blue-600">Tutor</span>
             </h1>
-
             <p className="text-slate-500 font-medium">
               Add tutor & course details in a clean modern form
             </p>
           </div>
 
           {/* FORM */}
-          <form action={handleAddCourse} className="space-y-10">
-
-            {/* GRID */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-              <Input className="h-12" name="tutorName" placeholder="Tutor Name" required />
-              <Input className="h-12" name="availableDays" placeholder="Available Days (Mon, Thu)" required />
-              <Input className="h-12" name="availableTimeSlot" placeholder="Time Slot (3:00 PM - 5:00 PM)" required />
-              <Input className="h-12" name="hourlyFee" type="number" placeholder="Hourly Fee" required />
-              <Input className="h-12" name="totalSlot" type="number" placeholder="Total Slot" required />
-              <Input className="h-12" name="institution" placeholder="Institution" required />
-              <Input className="h-12" name="experience" placeholder="Experience (5 Years)" required />
-              <Input className="h-12" name="location" placeholder="Location" required />
-              <Input className="h-12" name="teachingMode" placeholder="Online / Offline" required />
-              <Input className="h-12" name="thumbnail" placeholder="Image URL" required />
+          <form action={handleAddCourse} className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Form Fields Mapping */}
+              {[
+                {
+                  label: "Tutor Name",
+                  name: "tutorName",
+                  placeholder: "Tutor Name",
+                },
+                {
+                  label: "Available Days",
+                  name: "availableDays",
+                  placeholder: "Mon, Thu",
+                },
+                {
+                  label: "Time Slot",
+                  name: "availableTimeSlot",
+                  placeholder: "3:00 PM - 5:00 PM",
+                },
+                {
+                  label: "Hourly Fee",
+                  name: "hourlyFee",
+                  type: "number",
+                  placeholder: "Hourly Fee",
+                },
+                {
+                  label: "Total Slot",
+                  name: "totalSlot",
+                  type: "number",
+                  placeholder: "Total Slot",
+                },
+                {
+                  label: "Institution",
+                  name: "institution",
+                  placeholder: "Institution",
+                },
+                {
+                  label: "Experience",
+                  name: "experience",
+                  placeholder: "5 Years",
+                },
+                {
+                  label: "Location",
+                  name: "location",
+                  placeholder: "Location",
+                },
+                {
+                  label: "Teaching Mode",
+                  name: "teachingMode",
+                  placeholder: "Online / Offline",
+                },
+                { label: "Image URL", name: "image", placeholder: "Image URL" },
+              ].map((field) => (
+                <div key={field.name} className="flex flex-col gap-2">
+                  <label className="text-sm lg:text-xl font-semibold text-slate-700">
+                    {field.label}
+                  </label>
+                  <Input
+                    className="h-12 w-full"
+                    name={field.name}
+                    type={field.type || "text"}
+                    placeholder={field.placeholder}
+                    required
+                  />
+                </div>
+              ))}
 
               {/* CATEGORY */}
-              <div>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm lg:text-xl font-semibold text-slate-700">
+                  Category
+                </label>
                 <Select name="category" required>
                   <SelectTrigger className="h-12 rounded-xl border border-slate-200 bg-white hover:border-blue-500 transition">
                     <SelectValue placeholder="Select category" />
                   </SelectTrigger>
-
                   <SelectPopover className="rounded-xl border border-slate-200 shadow-xl bg-white">
                     <ListBox>
                       {CATEGORIES.map((cat) => (
@@ -103,28 +152,38 @@ export default function AddCourse() {
                 </Select>
               </div>
 
-              <Input className="h-12" name="duration" placeholder="Duration (e.g. 12h 30m)" required />
-
+              {/* DURATION */}
+              <div className="flex flex-col gap-2">
+                <label className="text-sm lg:text-xl font-semibold text-slate-700">
+                  Duration
+                </label>
+                <Input
+                  className="h-12 w-full"
+                  name="duration"
+                  placeholder="e.g. 12h 30m"
+                  required
+                />
+              </div>
             </div>
 
             {/* BUTTONS */}
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-4 pt-6">
               <Button
-                variant="flat"
-                className="flex-1 h-12 rounded-xl font-semibold"
+                onClick={() => window.history.back()}
+                variant="solid"
+                color="danger"
+                className="flex-1 h-12 rounded-xl  shadow-red-600/20 bg-red-400 text-xl text-white font-bold"
               >
                 Cancel
               </Button>
-
               <Button
                 type="submit"
                 color="primary"
-                className="flex-1 h-12 rounded-xl font-bold shadow-lg shadow-blue-600/20"
+                className="flex-1 h-12 rounded-xl font-bold shadow-lg shadow-blue-600/20 text-xl"
               >
                 Publish Course
               </Button>
             </div>
-
           </form>
         </div>
       </div>

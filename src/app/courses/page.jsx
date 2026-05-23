@@ -1,13 +1,12 @@
 import CourseCard from "@/components/CourseCard";
 import CoursesHeader from "@/components/CoursesHeader";
 import { fetchCourses } from "@/lib/courses/data";
-import { Button } from "@heroui/react";
 import { BookOpen, Filter } from "lucide-react";
 
 const CoursesPage = async ({ searchParams }) => {
-    // console.log(searchParams);
+ 
     const sParams = await searchParams;
-    // console.log(sParams);
+
 
 
     const courses = await fetchCourses(sParams?.searchTerm || "");
@@ -22,15 +21,9 @@ const CoursesPage = async ({ searchParams }) => {
                 <div className="flex justify-between items-center mb-12">
                     <h2 className="text-2xl font-bold flex items-center gap-2">
                         <BookOpen className="w-6 h-6 text-blue-600" />
-                        All Courses
+                        All Tutors 
                     </h2>
-                    <Button
-                        variant="flat"
-                        startContent={<Filter className="w-4 h-4" />}
-                        className="rounded-full font-bold"
-                    >
-                        Filters
-                    </Button>
+                    
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

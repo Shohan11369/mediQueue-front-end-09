@@ -33,7 +33,7 @@ export function MainNavbar() {
     return `font-medium px-4 py-2 rounded-full transition-all duration-200 ${
       isActive
         ? "bg-blue-600 text-white shadow-md"
-        : "text-slate-700 hover:text-blue-600 hover:bg-slate-100"
+        : "text-slate-700 hover:text-black hover:bg-slate-300"
     }`;
   };
 
@@ -85,13 +85,6 @@ export function MainNavbar() {
                   My Tutors
                 </Link>
 
-                {/* <Link
-                  href="/booked-sessions"
-                  className={getNavLinkClass("/booked-sessions")}
-                >
-                  Booked Sessions
-                </Link> */}
-
                 <Link
                   href="/dashboard"
                   className={getNavLinkClass("/dashboard")}
@@ -106,20 +99,23 @@ export function MainNavbar() {
           <div className="hidden md:flex items-center gap-4">
             {!isPending && !isLoggedIn ? (
               <>
-                <Link
-                  href="/login"
-                  className="font-medium text-slate-700 hover:text-blue-600"
-                >
-                  Login
+                <Link href="/login">
+                  <Button
+                    color="primary"
+                    variant="solid"
+                    className="font-bold rounded-full px-8 hover:text-white shadow-lg shadow-blue-600/20 hover:bg-blue-500"
+                  >
+                    Login
+                  </Button>
                 </Link>
 
                 <Link href="/register">
                   <Button
                     color="primary"
                     variant="solid"
-                    className="font-bold rounded-full px-8 shadow-lg shadow-blue-600/20"
+                    className="font-bold rounded-full px-8 hover:text-white shadow-lg shadow-blue-600/20 hover:bg-blue-500"
                   >
-                    Register Free
+                    Sign Up
                   </Button>
                 </Link>
               </>
@@ -193,6 +189,28 @@ export function MainNavbar() {
           <Link href="/courses" className="block py-2">
             Tutors
           </Link>
+
+          <div className="flex gap-4 justify-center items-center">
+            <Link href="/login">
+              <Button
+                color="primary"
+                variant="solid"
+                className="font-bold rounded-full px-8 shadow-lg shadow-blue-600/20 hover:bg-amber-500"
+              >
+                Login
+              </Button>
+            </Link>
+
+            <Link href="/register">
+              <Button
+                color="primary"
+                variant="solid"
+                className="font-bold rounded-full px-8 shadow-lg shadow-blue-600/20 hover:bg-amber-500"
+              >
+                Sign Up
+              </Button>
+            </Link>
+          </div>
 
           {isLoggedIn && (
             <>

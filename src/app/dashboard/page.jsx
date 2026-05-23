@@ -41,7 +41,7 @@ export default async function DashboardPage() {
 
                 {/* Enrollments Section */}
                 <div className="w-full md:w-3/4">
-                    <h1 className="text-3xl font-bold mb-6">My Enrolled Courses</h1>
+                    <h1 className="text-3xl font-bold mb-6">My Booking Tutors</h1>
 
                     {enrollments?.length === 0 ? (
                         <NotFound />
@@ -87,7 +87,7 @@ export default async function DashboardPage() {
 const NotFound = () => {
     return (
         <div className="p-12 text-center bg-slate-50 border rounded-2xl">
-            <p className="mb-4">No courses yet</p>
+            <p className="mb-4 text-4xl">No courses yet</p>
             <Link href="/courses">
                 <Button>Browse Courses</Button>
             </Link>
