@@ -8,14 +8,17 @@ import { Mail, Lock, ArrowRight } from "lucide-react";
 
 import Image from "next/image";
 import { signIn } from "@/lib/auth-client";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
-    // console.log(e.currentTarget);
+  
 
     const formData = new FormData(e.currentTarget);
-    // console.log(formData);
+  
 
     const loginData = Object.fromEntries(formData.entries());
 
@@ -24,11 +27,12 @@ export default function Login() {
       callbackURL: "/",
     });
 
-    if (error) {
-      toast.error("Registration failed");
-      return;
-    }
-    // router.push("/")
+
+      if (error) {
+    toast.error("Email or password invalid");
+    return;
+  }
+
   };
 
   const handleSocialLogin = async () => {
@@ -37,6 +41,9 @@ export default function Login() {
       callbackURL: "/",
     });
   };
+
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="min-h-[80vh] flex flex-col bg-slate-50">
       <div className="flex items-center justify-center p-4">
@@ -53,6 +60,79 @@ export default function Login() {
                 Continue your learning journey today
               </p>
             </div>
+
+            
+
+            <form onSubmit={handleLogin} className="space-y-6">
+              <div className="space-y-2">
+                <label
+                  htmlFor="email"
+                  className="text-sm font-bold text-slate-700 ml-1"
+                >
+                  Email Address
+                </label>
+                <Input
+                  id="email"
+                  required
+                  placeholder="Enter your email"
+                  type="email"
+                  name="email"
+                  startContent={<Mail className="w-5 h-5 text-slate-400" />}
+                  className="border-2 border-slate-200 hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
+                />
+              </div>
+
+
+              <div className="space-y-2">
+                <label
+                  htmlFor="password"
+                  className="text-sm font-bold text-slate-700 ml-1"
+                >
+                  Password
+                </label>
+
+                <div className="relative">
+                  <Input
+                    id="password"
+                    required
+                    placeholder="••••••••"
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    startContent={<Lock className="w-5 h-5 text-slate-400" />}
+                    className="border-2 border-slate-200 hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-blue-600"
+                  >
+                    {showPassword ? (
+                      <EyeOff className="w-5 h-5" />
+                    ) : (
+                      <Eye className="w-5 h-5" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex justify-end">
+                <Link
+                  href="#"
+                  className="text-sm font-bold text-blue-600 hover:underline underline-offset-4 transition-all"
+                >
+                  Forgot password?
+                </Link>
+              </div>
+              <Button
+                color="primary"
+                type="submit"
+                className="w-full h-14 text-lg font-black rounded-2xl shadow-xl shadow-blue-600/20 group"
+              >
+                Sign In{" "}
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </form>
 
             <div className="space-y-4">
               <Button
@@ -81,60 +161,6 @@ export default function Login() {
                 </span>
               </div>
             </div>
-
-            <form onSubmit={handleLogin} className="space-y-6">
-              <div className="space-y-2">
-                <label
-                  htmlFor="email"
-                  className="text-sm font-bold text-slate-700 ml-1"
-                >
-                  Email Address
-                </label>
-                <Input
-                  id="email"
-                  required
-                  placeholder="Enter your email"
-                  type="email"
-                  name="email"
-                  startContent={<Mail className="w-5 h-5 text-slate-400" />}
-                  className="border-2 border-slate-200 hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label
-                  htmlFor="password"
-                  className="text-sm font-bold text-slate-700 ml-1"
-                >
-                  Password
-                </label>
-                <Input
-                  id="password"
-                  required
-                  placeholder="••••••••"
-                  type="password"
-                  name="password"
-                  startContent={<Lock className="w-5 h-5 text-slate-400" />}
-                  className="border-2 border-slate-200 hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
-                />
-              </div>
-              <div className="flex justify-end">
-                <Link
-                  href="#"
-                  className="text-sm font-bold text-blue-600 hover:underline underline-offset-4 transition-all"
-                >
-                  Forgot password?
-                </Link>
-              </div>
-              <Button
-                color="primary"
-                type="submit"
-                className="w-full h-14 text-lg font-black rounded-2xl shadow-xl shadow-blue-600/20 group"
-              >
-                Sign In{" "}
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </form>
 
             <div className="text-center pt-2">
               <p className="text-sm text-slate-500 font-medium">
