@@ -10,7 +10,7 @@ const CancelEnrollButton = ({ enrollmentId }) => {
     const handleCancel = async () => {
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/enrollments/${enrollmentId}`, {
-                method: "DELETE", // আপনার ব্যাকএন্ডে অবশ্যই DELETE মেথড থাকতে হবে
+                method: "DELETE", 
             });
 
             if (res.ok) {
