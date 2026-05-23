@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 
-
 export default function Register() {
   const router = useRouter();
 
@@ -19,21 +18,44 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-
     const formData = new FormData(e.currentTarget);
-  
 
     const registerData = Object.fromEntries(formData.entries());
 
-    const { data, error } = await signUp.email({
-      ...registerData,
+    // const { data, error } = await signUp.email({
+    //   ...registerData,
+    // });
+
+    const res = await fetch("http://localhost:8080/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(registerData),
     });
 
-    if (error) {
-      toast.error("Registration failed");
+    const data = await res.json();
+
+    if (res.status === 409) {
+      toast.error("This email is already registered");
       return;
     }
+
+    if (!res.ok) {
+      toast.error(data.message || "Registration failed");
+      return;
+    }
+
+    toast.success("Registration successful!");
     router.push("/");
+
+    //
+
+    // if (error) {
+    //   toast.error("Registration failed");
+    //   return;
+    // }
+    // router.push("/");
   };
 
   return (
