@@ -13,26 +13,57 @@ import { Eye, EyeOff } from "lucide-react";
 import toast from "react-hot-toast";
 
 export default function Login() {
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+
+  //   const formData = new FormData(e.currentTarget);
+
+  //   const loginData = Object.fromEntries(formData.entries());
+
+  //   const { data, error } = await signIn.email({
+  //     ...loginData,
+  //     callbackURL: "/",
+  //   });
+
+  //     if (error) {
+  //   toast.error("Email or password invalid");
+  //   return;
+  // }
+
+  // };
+
   const handleLogin = async (e) => {
     e.preventDefault();
-  
 
     const formData = new FormData(e.currentTarget);
-  
-
     const loginData = Object.fromEntries(formData.entries());
 
-    const { data, error } = await signIn.email({
-      ...loginData,
-      callbackURL: "/",
-    });
+    try {
+      const res = await fetch("http://localhost:8080/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
 
+      const data = await res.json();
 
-      if (error) {
-    toast.error("Email or password invalid");
-    return;
-  }
+      if (res.status === 401) {
+        toast.error(data.message || "Email or password invalid");
+        return;
+      }
 
+      if (!res.ok) {
+        toast.error("Login failed");
+        return;
+      }
+
+      toast.success("Login successful!");
+      router.push("/");
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
   };
 
   const handleSocialLogin = async () => {
@@ -61,8 +92,6 @@ export default function Login() {
               </p>
             </div>
 
-            
-
             <form onSubmit={handleLogin} className="space-y-6">
               <div className="space-y-2">
                 <label
@@ -81,7 +110,6 @@ export default function Login() {
                   className="border-2 border-slate-200 hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
                 />
               </div>
-
 
               <div className="space-y-2">
                 <label

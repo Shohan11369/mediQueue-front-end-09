@@ -113,7 +113,7 @@ const CourseCard = ({ course }) => {
             className="font-bold rounded-xl px-5"
             endContent={<ChevronRight className="w-4 h-4" />}
           >
-            View
+            Booking
           </Button>
         </div>
       </div>
