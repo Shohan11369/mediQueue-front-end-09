@@ -37,7 +37,7 @@ const CourseCard = ({ course }) => {
             {/* content */}
             <div className="p-6 flex flex-col grow space-y-4">
                 <div className="space-y-1">
-                    <Link href={`/tutors/${_id}`}>
+                    <Link href={`/courses/${_id}`}>
                         <h3 className="text-lg font-bold leading-snug group-hover:text-blue-600 transition-colors">
                             {tutorName}
                         </h3>
@@ -68,7 +68,7 @@ const CourseCard = ({ course }) => {
                         ৳{hourlyFee}<span className="text-xs text-slate-400 font-normal">/hr</span>
                     </span>
 
-                    <Link href={`/tutors/${_id}`}>
+                    <Link href={`/courses/${_id}`}>
                         <Button
                             variant="flat"
                             color="primary"

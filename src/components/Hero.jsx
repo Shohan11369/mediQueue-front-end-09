@@ -10,14 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 const slidesData = [
-  {
-    title: "Master New Skills",
-    desc: "Unlock your potential with over 1,000+ high-quality courses.",
-    mainImg:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071",
-    smallImg:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800",
-  },
+  
   {
     title: "Learn Anytime, Anywhere",
     desc: "Access our vast library of courses on any device.",
@@ -34,6 +27,14 @@ const slidesData = [
     smallImg:
       "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800",
   },
+  {
+    title: "Master New Skills",
+    desc: "Unlock your potential with over 1,000+ high-quality courses.",
+    mainImg:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071",
+    smallImg:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800",
+  }
 ];
 
 const Hero = () => {
@@ -83,7 +84,7 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="relative group lg:ml-10">
-                  {/* মেইন ইমেজ */}
+                  {/* main image */}
                   <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden shadow-2xl">
                     <Image
                       src={slide.mainImg}
@@ -93,7 +94,7 @@ const Hero = () => {
                     />
                   </div>
 
-                  {/* ছোট ফ্লোটিং ইমেজ */}
+                  {/* small image*/}
                   <div className="absolute -bottom-6 -left-6 w-32 h-32 rounded-2xl shadow-2xl border-4 border-white overflow-hidden">
                     <Image
                       src={slide.smallImg}
