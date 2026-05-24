@@ -48,7 +48,8 @@ export default async function CourseDetails({ params }) {
    
   ];
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+    <div className="bg-white dark:bg-slate-900 text-black dark:text-white">
+      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 ">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
         <div className="lg:col-span-2 space-y-8">
           <div className="relative group overflow-hidden rounded-[2.5rem] shadow-2xl aspect-video">
@@ -70,12 +71,12 @@ export default async function CourseDetails({ params }) {
             </div>
           </div>
 
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+          <div className="space-y-4 ">
+            <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
               {tutorName} - {subject}
             </h1>
 
-            <p className="text-xl text-slate-500 leading-relaxed">
+            <p className="text-xl text-slate-500 dark:text-slate-400 leading-relaxed">
               {experience} experience • {institution} • {location} •{" "}
               {teachingMode} classes
             </p>
@@ -99,7 +100,7 @@ export default async function CourseDetails({ params }) {
         <div className="lg:col-span-1">
           <div className="sticky top-24 bg-white/70 backdrop-blur-md p-8 rounded-[2rem] border border-white/20 shadow-2xl space-y-8">
             <div className="space-y-2">
-              <p className="text-sm font-bold text-slate-500 uppercase tracking-widest">
+              <p className="text-sm font-bold text-slate-500 dark:text-black uppercase tracking-widest">
                 Course Price
               </p>
               <div className="flex items-baseline gap-2">
@@ -111,7 +112,7 @@ export default async function CourseDetails({ params }) {
             </div>
 
             <div className="space-y-4">
-              <p className="text-slate-700 font-medium">
+              <p className="text-slate-700 dark:text-black font-medium">
                 <strong>Instructor:</strong> {tutorName}
               </p>
               <div className="w-full h-px bg-slate-100"></div>
@@ -123,9 +124,9 @@ export default async function CourseDetails({ params }) {
                 ].map((item, i) => (
                   <li
                     key={i}
-                    className="flex items-center gap-3 text-sm font-bold text-slate-500"
+                    className="flex items-center gap-3 text-sm font-bold text-slate-500 dark:text-black"
                   >
-                    <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                    <div className="w-1.5 h-1.5 bg-blue-600  rounded-full"></div>
                     {item}
                   </li>
                 ))}
@@ -133,13 +134,16 @@ export default async function CourseDetails({ params }) {
             </div>
 
             <EnrollmentButton course={course} />
-            <p className="text-center text-xs text-slate-500 font-bold">
+            <p className="text-center text-xs text-slate-500 dark:text-slate-600 font-bold">
               30-Day Money-Back • Secure Payment
             </p>
           </div>
         </div>
       </div>
     </div>
+
+    </div>
+    
   );
 }
 
