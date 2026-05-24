@@ -1,7 +1,13 @@
+"use client";
+
 import { Chip, Button } from "@heroui/react";
 import { Clock, MapPin, BookOpen, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { useSession } from "@/lib/auth-client";
+
 
 const FeaturedCard = ({ course }) => {
   const {
@@ -15,6 +21,21 @@ const FeaturedCard = ({ course }) => {
     availableDays,
     availableTimeSlot,
   } = course;
+
+  const router = useRouter();
+    const { data: session } = useSession();
+  
+
+  const handleView = () => {
+      if (!session) {
+        toast.error("Please login first");
+        router.push("/login");
+        return;
+      }
+  
+      router.push(`/courses/${_id}`);
+    };
+
 
   return (
     <div className="group flex flex-col bg-white rounded-[2rem] border border-slate-100 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_50px_rgba(8,112,184,0.15)]">
@@ -74,17 +95,15 @@ const FeaturedCard = ({ course }) => {
             <span className="text-slate-400 text-sm font-normal"></span>
           </span>
 
-          <Link href={`/courses/${_id}`}>
-            <Button
-              size="sm"
-              variant="solid"
-              color="primary"
-              className="font-bold rounded-xl px-5 bg-cyan-200 hover:bg-amber-200"
-              endContent={<ChevronRight className="w-4 h-4" />}
-            >
-              Booking
-            </Button>
-          </Link>
+          <Button
+                      onClick={handleView}
+                      variant="solid"
+                      color="primary"
+                      className="font-bold rounded-xl px-5 bg-cyan-200 hover:bg-amber-200"
+                      endContent={<ChevronRight className="w-4 h-4" />}
+                    >
+                      Booking
+                    </Button>
         </div>
       </div>
     </div>

@@ -15,6 +15,9 @@ export function MainNavbar() {
   const { data: session, isPending } = useSession();
   const pathname = usePathname();
 
+  // const router = useRouter();
+  //   const { data: session } = useSession();
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
@@ -190,46 +193,48 @@ export function MainNavbar() {
             Tutors
           </Link>
 
-          <div className="flex gap-4 justify-center items-center">
-            <Link href="/login">
-              <Button
-                color="primary"
-                variant="solid"
-                className="font-bold rounded-full px-8 shadow-lg shadow-blue-600/20 hover:bg-amber-500"
-              >
-                Login
-              </Button>
-            </Link>
-
-            <Link href="/register">
-              <Button
-                color="primary"
-                variant="solid"
-                className="font-bold rounded-full px-8 shadow-lg shadow-blue-600/20 hover:bg-amber-500"
-              >
-                Sign Up
-              </Button>
-            </Link>
-          </div>
-
-          {isLoggedIn && (
-            <>
+         
+          {!isLoggedIn ? (
+            <div className="flex gap-4 justify-center items-center py-2">
+              <Link href="/login">
+                <Button
+                  color="primary"
+                  variant="solid"
+                  className="rounded-full px-4 py-2 text-sm text-white  bg-blue-400"
+                >
+                  Login
+                </Button>
+              </Link>
+              <Link href="/register">
+                <Button
+                  color="primary"
+                  variant="solid"
+                 className="rounded-full px-4 py-2 text-sm text-black  bg-green-200"
+                >
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
+          ) : (
+            <div className="space-y-2">
               <Link href="/add-course" className="block py-2">
                 Add Tutor
               </Link>
-
               <Link href="/my-courses" className="block py-2">
                 My Tutors
               </Link>
-
               <Link href="/dashboard" className="block py-2">
                 Dashboard
               </Link>
-
-              {/* <Link href="/booked-sessions" className="block py-2">
-                Booked Sessions
-              </Link> */}
-            </>
+              
+              <button
+                onClick={handleLogOut}
+                className="px-4 py-2 text-sm text-red-500 hover:bg-red-50 flex items-center gap-3 text-left"
+              >
+                <LogOut className="w-4 h-4" />
+                Logout
+              </button>
+            </div>
           )}
         </div>
       )}
