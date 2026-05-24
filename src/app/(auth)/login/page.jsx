@@ -49,7 +49,7 @@ export default function Login() {
       <div className="flex items-center justify-center p-4">
         <div className="w-full max-w-md ">
           <div className="bg-white dark:bg-slate-900 text-black dark:text-white p-10 rounded-[2.5rem] border border-slate-200 shadow-2xl space-y-8 relative overflow-hidden">
-            {/* Decorative element */}
+           
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
 
             <div className="text-center space-y-2 relative">

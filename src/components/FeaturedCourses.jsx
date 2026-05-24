@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const FeaturedCourses = async () => {
     const courses = await fetchFeaturedCourses();
-    // console.log(courses);
+
 
     return (
         <section className="py-24 bg-slate-50 dark:bg-slate-900 text-black dark:text-white">

@@ -59,7 +59,7 @@ export function MainNavbar() {
             <div className="p-2 bg-blue-600 rounded-xl group-hover:rotate-12 transition-transform">
               <BookOpen className="w-6 h-6 text-white" />
             </div>
-            <span className="font-extrabold text-2xl text-slate-900">
+            <span className="font-extrabold text-2xl text-slate-900 dark:text-white">
               MediQueue
             </span>
           </Link>
@@ -102,7 +102,7 @@ export function MainNavbar() {
             )}
           </div>
 
-          {/* 🌙 DARK MODE TOGGLE */}
+          {/*DARK MODE TOGGLE */}
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="p-2 rounded-full bg-slate-200 dark:bg-slate-700"

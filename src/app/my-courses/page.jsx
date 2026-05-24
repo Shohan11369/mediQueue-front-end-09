@@ -43,7 +43,7 @@ export default async function MyCoursesPage() {
           </p>
         </div>
 
-        {/* EMPTY STATE */}
+        {/*EMPTY STATE */}
         {enrollments?.length === 0 ? (
           <NotFound />
         ) : (

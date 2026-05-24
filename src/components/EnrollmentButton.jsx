@@ -39,11 +39,7 @@ export default function EnrollmentButton({ course }) {
         },
       );
 
-    //   if (!res.ok) {
-    //     toast.error("Enrollment failed. Try again.");
-    //     return;
-    //   }
-
+  
       const data = await res.json();
 
       if (!res.ok) {
