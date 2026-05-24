@@ -96,7 +96,7 @@ export function MainNavbar() {
                   href="/dashboard"
                   className={getNavLinkClass("/dashboard")}
                 >
-                  Dashboard
+                  My-Bookings
                 </Link>
               </>
             )}
@@ -167,7 +167,7 @@ export function MainNavbar() {
                     className="px-4 py-2 text-sm hover:bg-slate-50 hover:dark:bg-gray-500 flex items-center gap-3"
                   >
                     <LayoutDashboard className="w-4 h-4" />
-                    Dashboard
+                      My-Bookings
                   </Link>
 
                   <Link
@@ -239,7 +239,7 @@ export function MainNavbar() {
                 My Tutors
               </Link>
               <Link href="/dashboard" className="block py-2">
-                Dashboard
+                My-Bookings
               </Link>
 
               <button
