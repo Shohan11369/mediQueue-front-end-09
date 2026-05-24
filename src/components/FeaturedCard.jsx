@@ -99,7 +99,7 @@ const FeaturedCard = ({ course }) => {
                       onClick={handleView}
                       variant="solid"
                       color="primary"
-                      className="font-bold rounded-xl px-5 bg-cyan-200 hover:bg-amber-200"
+                      className="font-bold rounded-xl px-5 bg-cyan-200 dark:bg-black hover:text-black hover:bg-amber-200"
                       endContent={<ChevronRight className="w-4 h-4" />}
                     >
                       Booking

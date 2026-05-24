@@ -25,7 +25,7 @@ const CancelEnrollButton = ({ enrollmentId }) => {
 
     return (
         <AlertDialog>
-            <Button color="danger" variant="light" size="sm">
+            <Button className="dark:bg-slate-900 text-black dark:text-white" color="danger" variant="light" size="sm">
                 Cancel
             </Button>
             <AlertDialog.Backdrop>
@@ -37,12 +37,12 @@ const CancelEnrollButton = ({ enrollmentId }) => {
                             <AlertDialog.Heading>Confirm Cancellation</AlertDialog.Heading>
                         </AlertDialog.Header>
                         <AlertDialog.Body>
-                            <p className="text-slate-600">
+                            <p className="text-slate-600 dark:text-white">
                                 Are you sure you want to cancel this enrollment? This action cannot be undone.
                             </p>
                         </AlertDialog.Body>
                         <AlertDialog.Footer>
-                            <Button slot="close" variant="tertiary">
+                            <Button className="dark:bg-slate-900 text-black dark:text-white"  slot="close" variant="tertiary">
                                 Keep Enrollment
                             </Button>
                           

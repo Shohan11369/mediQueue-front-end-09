@@ -39,7 +39,7 @@ const slidesData = [
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden pt-12 pb-24 md:pt-24 md:pb-32 bg-slate-50">
+    <section className="relative dark:bg-slate-900 text-black dark:text-white overflow-hidden pt-12 pb-24 md:pt-24 md:pb-32 bg-slate-50">
       <Swiper
         navigation
         pagination={{ clickable: true }}
@@ -56,7 +56,7 @@ const Hero = () => {
                     <Star className="w-4 h-4 fill-blue-600" />
                     <span>Trusted by 10,000+ Students Worldwide</span>
                   </div>
-                  <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
+                  <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900  dark:text-white leading-[1.1]">
                     {slide.title.split(" ").slice(0, 3).join(" ")}{" "}
                     <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-600 to-blue-800">
                       Expert-Led

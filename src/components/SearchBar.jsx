@@ -57,20 +57,20 @@ const SearchBar = () => {
         )}
       </div>
 
-      <div className="w-px h-8 bg-slate-100 hidden md:block" />
+      <div className="w-px h-8 bg-slate-100  hidden md:block" />
 
       {/* Date input */}
-      <div className="relative w-full md:w-48 flex items-center px-4">
-        <CalendarDays className="w-5 h-5 text-blue-500" />
+      <div className="relative w-full md:w-48 flex items-center px-4 ">
+        <CalendarDays className="w-5 h-5 text-blue-500 " />
         <input
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          className="w-full h-14 px-4 outline-none bg-transparent text-slate-500 font-medium cursor-pointer"
+          className="w-full h-14 px-4 outline-none bg-transparent text-slate-500   font-medium cursor-pointer"
         />
         {date && (
           <button onClick={() => setDate("")} className="absolute right-4 text-slate-300 hover:text-slate-600">
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4 dark:text-slate-300" />
           </button>
         )}
       </div>

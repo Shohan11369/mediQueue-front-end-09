@@ -72,7 +72,7 @@ const CourseCard = ({ course }) => {
       {/* content */}
       <div className="p-6 flex flex-col grow space-y-4">
         <div className="space-y-1">
-          <h3 className="text-lg font-bold leading-snug group-hover:text-blue-600 transition-colors">
+          <h3 className="text-lg font-bold leading-snug group-hover:text-blue-600 dark:text-black transition-colors">
             {tutorName}
           </h3>
 
@@ -110,7 +110,7 @@ const CourseCard = ({ course }) => {
             onClick={handleView}
             variant="solid"
             color="primary"
-            className="font-bold rounded-xl px-5 bg-cyan-200 hover:bg-amber-200"
+            className="font-bold rounded-xl px-5 bg-cyan-200 dark:bg-black hover:dark:text-black hover:bg-amber-200"
             endContent={<ChevronRight className="w-4 h-4" />}
           >
             Booking

@@ -7,6 +7,8 @@ import Link from "next/link";
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import { signOut, useSession } from "@/lib/auth-client";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export function MainNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,6 +16,8 @@ export function MainNavbar() {
   const router = useRouter();
   const { data: session, isPending } = useSession();
   const pathname = usePathname();
+
+  const { theme, setTheme } = useTheme();
 
   // const router = useRouter();
   //   const { data: session } = useSession();
@@ -36,13 +40,13 @@ export function MainNavbar() {
     return `font-medium px-4 py-2 rounded-full transition-all duration-200 ${
       isActive
         ? "bg-blue-600 text-white shadow-md"
-        : "text-slate-700 hover:text-black hover:bg-slate-300"
+        : "text-slate-700 dark:text-black dark:bg-gray-300 hover:text-black hover:bg-slate-300"
     }`;
   };
 
   return (
     <nav
-      className={`sticky top-0 w-full z-50 transition-all duration-300 ${
+      className={`sticky top-0 dark:bg-slate-900 text-black dark:text-white w-full z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/70 backdrop-blur-md shadow-sm py-2"
           : "bg-slate-50 py-4"
@@ -98,6 +102,18 @@ export function MainNavbar() {
             )}
           </div>
 
+          {/* 🌙 DARK MODE TOGGLE */}
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="p-2 rounded-full bg-slate-200 dark:bg-slate-700"
+          >
+            {theme === "dark" ? (
+              <Sun className="w-5 h-5 text-yellow-400" />
+            ) : (
+              <Moon className="w-5 h-5 text-black" />
+            )}
+          </button>
+
           {/* AUTH SECTION */}
           <div className="hidden md:flex items-center gap-4">
             {!isPending && !isLoggedIn ? (
@@ -138,7 +154,7 @@ export function MainNavbar() {
                 </button>
 
                 {/* DROPDOWN */}
-                <div className="absolute right-0 top-12 w-56 bg-white border rounded-2xl shadow-2xl hidden group-hover:flex flex-col py-2 z-50">
+                <div className="absolute right-0 top-12 w-56 bg-white dark:bg-slate-900 text-black dark:text-white border rounded-2xl shadow-2xl hidden group-hover:flex flex-col py-2 z-50">
                   <div className="px-4 py-3 border-b">
                     <p className="font-bold text-sm">{session?.user?.name}</p>
                     <p className="text-xs text-slate-500">
@@ -148,7 +164,7 @@ export function MainNavbar() {
 
                   <Link
                     href="/dashboard"
-                    className="px-4 py-2 text-sm hover:bg-slate-50 flex items-center gap-3"
+                    className="px-4 py-2 text-sm hover:bg-slate-50 hover:dark:bg-gray-500 flex items-center gap-3"
                   >
                     <LayoutDashboard className="w-4 h-4" />
                     Dashboard
@@ -156,7 +172,7 @@ export function MainNavbar() {
 
                   <Link
                     href="/dashboard"
-                    className="px-4 py-2 text-sm hover:bg-slate-50 flex items-center gap-3"
+                    className="px-4 py-2 text-sm hover:bg-slate-50 hover:dark:bg-gray-500 flex items-center gap-3"
                   >
                     <User className="w-4 h-4" />
                     Profile
@@ -164,7 +180,7 @@ export function MainNavbar() {
 
                   <button
                     onClick={handleLogOut}
-                    className="px-4 py-2 text-sm text-red-500 hover:bg-red-50 flex items-center gap-3 text-left"
+                    className="px-4 py-2 text-sm text-red-500 hover:bg-red-50 hover:dark:bg-gray-500 flex items-center gap-3 text-left"
                   >
                     <LogOut className="w-4 h-4" />
                     Logout
@@ -185,7 +201,7 @@ export function MainNavbar() {
 
       {/* MOBILE MENU */}
       {isMenuOpen && (
-        <div className="md:hidden px-4 pb-6 space-y-2 bg-white border-t">
+        <div className="md:hidden px-4 pb-6 space-y-2 bg-white dark:bg-slate-900 text-black dark:text-white border-t">
           <Link href="/" className="block py-2">
             Home
           </Link>
@@ -193,7 +209,6 @@ export function MainNavbar() {
             Tutors
           </Link>
 
-         
           {!isLoggedIn ? (
             <div className="flex gap-4 justify-center items-center py-2">
               <Link href="/login">
@@ -209,7 +224,7 @@ export function MainNavbar() {
                 <Button
                   color="primary"
                   variant="solid"
-                 className="rounded-full px-4 py-2 text-sm text-black  bg-green-200"
+                  className="rounded-full px-4 py-2 text-sm text-black  bg-green-200"
                 >
                   Sign Up
                 </Button>
@@ -226,7 +241,7 @@ export function MainNavbar() {
               <Link href="/dashboard" className="block py-2">
                 Dashboard
               </Link>
-              
+
               <button
                 onClick={handleLogOut}
                 className="px-4 py-2 text-sm text-red-500 hover:bg-red-50 flex items-center gap-3 text-left"

@@ -47,14 +47,14 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-[80vh] flex flex-col bg-slate-50 py-12">
+    <div className="min-h-[80vh] flex flex-col bg-slate-50 py-12 dark:bg-slate-900 text-black dark:text-white">
       <div className="grow flex items-center justify-center p-4">
-        <div className="w-full max-w-md">
-          <div className="bg-white p-10 rounded-[2.5rem] border border-slate-200 shadow-2xl space-y-8 relative overflow-hidden">
+        <div className="w-full max-w-md ">
+          <div className="bg-white p-10 dark:bg-slate-900 text-black dark:text-white rounded-[2.5rem] border border-slate-200 shadow-2xl space-y-8 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
 
             <div className="text-center space-y-2 relative">
-              <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                 Join <span className="text-blue-600">MediQueue</span>
               </h2>
               <p className="text-slate-500 font-medium">
@@ -62,11 +62,11 @@ export default function Register() {
               </p>
             </div>
 
-            <form className="space-y-6" onSubmit={handleRegister}>
-              <div className="space-y-2">
+            <form className="space-y-6 " onSubmit={handleRegister}>
+              <div className="space-y-2 dark:text-white">
                 <label
                   htmlFor="name"
-                  className="text-sm font-bold text-slate-700 ml-1"
+                  className="text-sm font-bold text-slate-700 dark:text-white ml-1"
                 >
                   Full Name
                 </label>
@@ -76,14 +76,14 @@ export default function Register() {
                   placeholder="Enter your name"
                   name="name"
                   startContent={<User className="w-5 h-5 text-slate-400" />}
-                  className="border-2 border-slate-200 hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
+                  className="border-2 border-slate-200 dark:text-black hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
                 />
               </div>
 
               <div className="space-y-2">
                 <label
                   htmlFor="email"
-                  className="text-sm font-bold text-slate-700 ml-1"
+                  className="text-sm font-bold text-slate-700 dark:text-white ml-1"
                 >
                   Email Address
                 </label>
@@ -94,14 +94,14 @@ export default function Register() {
                   type="email"
                   name="email"
                   startContent={<Mail className="w-5 h-5 text-slate-400" />}
-                  className="border-2 border-slate-200 hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
+                  className="border-2 border-slate-200 dark:text-black hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
                 />
               </div>
 
               <div className="space-y-2">
                 <label
                   htmlFor="image"
-                  className="text-sm font-bold text-slate-700 ml-1"
+                  className="text-sm font-bold text-slate-700 dark:text-white ml-1"
                 >
                   Profile Image URL
                 </label>
@@ -111,14 +111,14 @@ export default function Register() {
                   type="url"
                   name="image"
                   startContent={<User className="w-5 h-5 text-slate-400" />}
-                  className="border-2 border-slate-200 hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
+                  className="border-2 border-slate-200b dark:text-black hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
                 />
               </div>
 
               <div className="space-y-2">
                 <label
                   htmlFor="password"
-                  className="text-sm font-bold text-slate-700 ml-1"
+                  className="text-sm font-bold text-slate-700 dark:text-white ml-1"
                 >
                   Password
                 </label>
@@ -131,7 +131,7 @@ export default function Register() {
                     type={showPassword ? "text" : "password"}
                     name="password"
                     startContent={<Lock className="w-5 h-5 text-slate-400" />}
-                    className="border-2 border-slate-200 hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
+                    className="border-2 border-slate-200 dark:text-black hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
                   />
 
                   <button
@@ -175,14 +175,14 @@ export default function Register() {
             <div className="space-y-4">
               <Button
                 variant="bordered"
-                className="w-full h-12 font-bold rounded-2xl border-slate-200 hover:bg-slate-50 transition-colors gap-3"
+                className="w-full h-12 font-bold rounded-2xl border-slate-200 hover:bg-slate-50 hover:dark:bg-black dark:text-white transition-colors gap-3"
                 onClick={handleSocialSignUp}
               >
                 <Image
                   width={20}
                   height={20}
                   src="https://www.google.com/favicon.ico"
-                  className="w-5 h-5"
+                  className="w-5 h-5 "
                   alt="Google"
                 />
                 Sign Up with Google

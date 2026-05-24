@@ -31,14 +31,14 @@ export default async function MyCoursesPage() {
   const enrollments = (await res.json()) || [];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-black dark:text-white">
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* HEADER */}
         <div className="mb-10">
-          <h1 className="text-4xl font-black text-slate-900">
+          <h1 className="text-4xl font-black text-slate-900 dark:text-white">
             My <span className="text-blue-600">Tutors</span>
           </h1>
-          <p className="text-slate-500 mt-2">
+          <p className="text-slate-500 dark:text-white mt-2">
             This page displays tutors created by the logged-in user
           </p>
         </div>
@@ -47,7 +47,7 @@ export default async function MyCoursesPage() {
         {enrollments?.length === 0 ? (
           <NotFound />
         ) : (
-          <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-white border border-slate-200  rounded-2xl shadow-sm overflow-hidden">
             {/* TABLE */}
             <div className="overflow-x-auto">
               <table className="w-full text-left">
@@ -115,12 +115,12 @@ export default async function MyCoursesPage() {
 /* EMPTY STATE */
 const NotFound = () => {
   return (
-    <div className="bg-white border border-dashed border-slate-300 rounded-2xl p-16 text-center">
+    <div className="bg-white border border-dashed border-slate-300 dark:bg-slate-900 text-black dark:text-white  rounded-2xl p-16 text-center">
       <div className="text-5xl mb-4">📭</div>
 
-      <h3 className="text-xl font-bold text-slate-900 mb-2">No tutors found</h3>
+      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">No tutors found</h3>
 
-      <p className="text-slate-500 mb-6">
+      <p className="text-slate-500 dark:text-white mb-6">
         You haven’t created any tutor entries yet
       </p>
 

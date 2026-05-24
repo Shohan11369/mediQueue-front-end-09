@@ -42,26 +42,28 @@ const handleAddCourse = async (formData) => {
 
 export default function AddCourse() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 py-14 px-4">
-      <div className="max-w-5xl mx-auto">
+
+    
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-14 px-4 text-black dark:text-white">
+      <div className="max-w-5xl mx-auto ">
         {/* MAIN CARD */}
-        <div className="bg-white/80 backdrop-blur-xl border border-slate-200 shadow-[0_30px_100px_rgba(0,0,0,0.08)] rounded-[2.5rem] p-10 md:p-14 space-y-12">
+        <div className="bg-white/80 backdrop-blur-xl border border-slate-200  dark:bg-slate-900 text-black dark:text-white shadow-[0_30px_100px_rgba(0,0,0,0.08)] rounded-[2.5rem] p-10 md:p-14 space-y-12">
           {/* HEADER */}
           <div className="text-center space-y-3">
             <div className="mx-auto w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-600">
               <BookPlus className="w-8 h-8" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-slate-900">
+            <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white">
               Add New <span className="text-blue-600">Tutor</span>
             </h1>
-            <p className="text-slate-500 font-medium">
+            <p className="text-slate-500 dark:text-white font-medium">
               Add tutor & course details in a clean modern form
             </p>
           </div>
 
           {/* FORM */}
-          <form action={handleAddCourse} className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <form action={handleAddCourse} className="space-y-8 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
               {/* Form Fields Mapping */}
               {[
                 {
@@ -114,11 +116,11 @@ export default function AddCourse() {
                 { label: "Image URL", name: "image", placeholder: "Image URL" },
               ].map((field) => (
                 <div key={field.name} className="flex flex-col gap-2">
-                  <label className="text-sm lg:text-xl font-semibold text-slate-700">
+                  <label className="text-sm lg:text-xl font-semibold text-slate-700 dark:text-white">
                     {field.label}
                   </label>
                   <Input
-                    className="h-12 w-full"
+                    className="h-12 w-full dark:bg-white dark:text-black"
                     name={field.name}
                     type={field.type || "text"}
                     placeholder={field.placeholder}
@@ -129,7 +131,7 @@ export default function AddCourse() {
 
               {/* CATEGORY */}
               <div className="flex flex-col gap-2">
-                <label className="text-sm lg:text-xl font-semibold text-slate-700">
+                <label className="text-sm lg:text-xl font-semibold text-slate-700 dark:text-white">
                   Category
                 </label>
                 <Select name="category" required>
@@ -154,11 +156,11 @@ export default function AddCourse() {
 
               {/* DURATION */}
               <div className="flex flex-col gap-2">
-                <label className="text-sm lg:text-xl font-semibold text-slate-700">
+                <label className="text-sm lg:text-xl font-semibold text-slate-700 dark:text-white">
                   Duration
                 </label>
                 <Input
-                  className="h-12 w-full"
+                  className="h-12 w-full dark:bg-white dark:text-black"
                   name="duration"
                   placeholder="e.g. 12h 30m"
                   required
@@ -188,5 +190,6 @@ export default function AddCourse() {
         </div>
       </div>
     </div>
+    
   );
 }
